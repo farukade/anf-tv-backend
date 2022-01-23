@@ -8,7 +8,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     min: 0,
     max: 5,
     acquire: 5000,
-    Idle: 1000,
+    Idle: 1000
   },
 })
 
