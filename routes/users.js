@@ -11,7 +11,7 @@ const { jwtAuth } = require("../middleware/auth");
 // });
 
 // Create new user
-router.post('/create-user', authController.authController.addUser);
+router.post('/create-user', jwtAuth.verifyUser, authController.authController.addUser);
 
 // Create new user
 router.post('/sign-in', authController.authController.signIn);
