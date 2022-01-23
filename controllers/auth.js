@@ -57,8 +57,8 @@ exports.authController = {
         .catch((err) => {
             res.status(400)
                .send({
-                 message:err.message || 
-                 "could not fetch record"})
+                 error: err 
+                })
         })
     },
     forgotPassword: () => {}
