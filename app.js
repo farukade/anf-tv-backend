@@ -28,11 +28,21 @@ app.use('/news', newsRouter);
 
 app.use(cors());
 
+const corsOptions = {allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin']}
+
+app.options('*', cors(corsOptions));
+
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500/"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
   next();
 });
+
+app.get('/user/:id', function (req, res, next) {
+  res.json({user: 'CORS enabled'})
+})
 
 const db = require("./models/index");
 db.sequelize.sync();

@@ -23,6 +23,7 @@ exports.authController = {
                         });
     },
     signIn: (req, res) => {
+      console.log(req.body);
         users.findOne({
           where: {
             userName: req.body.userName
@@ -50,6 +51,7 @@ exports.authController = {
 
             res.status(200)
                .send({
+                 status: "success",
                  message: "sign in successful", 
                  data: payload, 
                  accessToken: token})
@@ -59,7 +61,9 @@ exports.authController = {
                .send({
                  error: err 
                 })
+                console.log(err);
         })
+        // console.log(res)
     },
     forgotPassword: () => {}
 };
