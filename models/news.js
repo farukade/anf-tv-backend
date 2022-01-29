@@ -1,11 +1,11 @@
 module.exports = (sequelize, dataType) => {
   const news = sequelize.define('news', {
-    title: {
+    subject: {
       type: dataType.STRING,
       allowNull: false
     },
     content: {
-      type: dataType.STRING,
+      type: dataType.STRING(19456),
       allowNull: false
     },
     category: {
@@ -13,12 +13,12 @@ module.exports = (sequelize, dataType) => {
       allowNull: false
     },
     media: {
-      type: dataType.STRING(9719)
+      type: dataType.STRING(19719)
     },
     editorsPick: {
       type: dataType.BOOLEAN
     },
-    topNews: {
+    topStory: {
       type: dataType.BOOLEAN
     }
   })

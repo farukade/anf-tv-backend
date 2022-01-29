@@ -3,12 +3,18 @@ var router = express.Router();
 var newsController = require('../controllers/news')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+// router.get('/', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
+
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 //Create news
-router.post('/create-news', newsController.newsControllers.createNews);
+router.post('/create', newsController.newsControllers.createNews);
 
 
 //Get one news
