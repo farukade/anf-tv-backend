@@ -45,6 +45,7 @@ exports.authController = {
             let payload = {
                 id: user.id, 
                 userName: user.userName,
+                email: user.email,
                 userType: user.userType
             };
             let token = jwt.sign(payload, process.env.secret, {expiresIn: 300000});

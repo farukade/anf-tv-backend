@@ -26,19 +26,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/news', newsRouter);
 
-app.use(cors());
-
-const corsOptions = {allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin']}
-
-app.options('*', cors(corsOptions));
-
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
+app.use(cors({ origin: 'https://anf-tv.netlify.app/' , credentials :  true}));
 
 app.get('/user/:id', function (req, res, next) {
   res.json({user: 'CORS enabled'})
