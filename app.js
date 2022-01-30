@@ -26,7 +26,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/news', newsRouter);
 
-app.use(cors({ origin: 'https://anf-tv.netlify.app/', credentials: true}));
+app.use(cors({ origin: 'https://anf-tv.netlify.app', credentials: true}));
 
 app.get('/user/:id', function (req, res, next) {
   res.json({user: 'CORS enabled'})
