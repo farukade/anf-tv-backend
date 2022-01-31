@@ -5,16 +5,16 @@ const news = db.news
 exports.newsControllers = {
   createNews: (req, res) => {
     const singleNews = req.body;
-    if (req.body.editorsPick === "on") {
-      req.body.editorsPick = true;
-    } else {
-      req.body.editorsPick = false;
-    }
-    if (req.body.topStory === "on") {
-      req.body.topStory = true;
-    } else {
-      req.body.topStory = false;
-    }
+    // if (req.body.editorsPick === true) {
+    //   req.body.editorsPick = true;
+    // } else {
+    //   req.body.editorsPick = false;
+    // }
+    // if (req.body.topStory === "on") {
+    //   req.body.topStory = true;
+    // } else {
+    //   req.body.topStory = false;
+    // }
     news
       .create(singleNews)
         .then((data) => {
