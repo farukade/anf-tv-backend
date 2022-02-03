@@ -33,7 +33,7 @@ app.get('/user/:id', function (req, res, next) {
 })
 
 const db = require("./models/index");
-db.sequelize.sync();
+db.sequelize.sync({force: true});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
