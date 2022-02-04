@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var newsController = require('../controllers/news')
+var newsController = require('../controllers/news');
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -16,16 +16,22 @@ router.use(function(req, res, next) {
 //Create news
 router.post('/create', newsController.newsControllers.createNews);
 
+//Get news by category (10 at a time);
+router.get('/:categoryName/:id', newsController.newsControllers.getByCategory);
+
+//Get news all news (10 at a time); for error control
+// category name must be news in this case
+router.get('/:categoryName', newsController.newsControllers.getByCategory);
 
 //Get one news
 router.get('/get-single-news/:id', newsController.newsControllers.getOneNews);
 
 
 //Get all news
-router.get('/all-news', newsController.newsControllers.getAllNews);
+router.get('/', newsController.newsControllers.getAllNews);
 
 //Update news
-router.put('/update-news/:id', newsController.newsControllers.updateNews);
+router.put('/update/:id', newsController.newsControllers.updateNews);
 
 //Update single new
 router.put('/update-news/:id', newsController.newsControllers.updateNews);
