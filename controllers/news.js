@@ -19,20 +19,22 @@ exports.newsControllers = {
           const newData = data.reverse();
           newData.forEach(element => {
             let tops = element.topStory;
-            console.log(tops);
+            // console.log(tops);
             let edits = element.editorsPick;
-            console.log(edits);
+            // console.log(edits);
             let cat = element.category;
-            console.log(cat);
+            // console.log(cat);
             if (tops) {
+              if (pickedCat.indexOf(cat) < 0) {
+                topInCat.push(element);
+                pickedCat.push(cat);
+              }
               topStories.push(element);
             } else if (edits) {
               editorsPick.push(element);
-            } else if (featured.length < 30) {
+            }; 
+            if (featured.length < 30) {
               featured.push(element);
-            } else if (tops && (pickedCat.indexOf(cat) = -1)) {
-              topInCat.push(element);
-              pickedCat.push(cat)
             }
           });
           resArr.push(topStories);
