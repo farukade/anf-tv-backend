@@ -1,8 +1,53 @@
-const db = require('../models/index')
-const news = db.news
+const db = require('../models/index');
+const news = db.news;
 
 
 exports.newsControllers = {
+  getLanding: (req, res) => {
+    const resArr = [];
+    news.findAll()
+        .then((data) => {
+          // res.send(data);
+          // console.log(data);
+          const topStories = [];
+          const editorsPick = [];
+          const featured = [];
+          const topInCat = [];
+          const pickedCat = [];
+
+          //sort from new to old
+          const newData = data.reverse();
+          newData.forEach(element => {
+            let tops = element.topStory;
+            console.log(tops);
+            let edits = element.editorsPick;
+            console.log(edits);
+            let cat = element.category;
+            console.log(cat);
+            if (tops) {
+              topStories.push(element);
+            } else if (edits) {
+              editorsPick.push(element);
+            } else if (featured.length < 30) {
+              featured.push(element);
+            } else if (tops && (pickedCat.indexOf(cat) = -1)) {
+              topInCat.push(element);
+              pickedCat.push(cat)
+            }
+          });
+          resArr.push(topStories);
+          resArr.push(editorsPick);
+          resArr.push(featured);
+          resArr.push(topInCat);
+
+          res.status(200)
+             .send(resArr);
+        })
+        .catch((err) => {
+          res.status(400)
+             .send(err.message);
+        })
+  },
   createNews: (req, res) => {
     const singleNews = req.body;
     news

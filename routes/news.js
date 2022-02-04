@@ -28,13 +28,16 @@ router.get('/get-single-news/:id', newsController.newsControllers.getOneNews);
 
 
 //Get all news
-router.get('/', newsController.newsControllers.getAllNews);
+// router.get('/all', newsController.newsControllers.getAllNews);
+
+//Get all contents for index page
+router.get('/', newsController.newsControllers.getLanding);
 
 //Update news
 router.put('/update/:id', newsController.newsControllers.updateNews);
 
 //Update single new
-router.put('/update-news/:id', newsController.newsControllers.updateNews);
+// router.put('/update-news/:id', newsController.newsControllers.updateNews);
 
 //Delete single new
 router.delete('/delete-news/:id', newsController.newsControllers.deleteNews);
