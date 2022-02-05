@@ -52,7 +52,8 @@ exports.newsControllers = {
   },
   createNews: (req, res) => {
     const singleNews = req.body;
-    news
+    if (singleNews.category == ('politics' || 'sports' || 'technology' || 'business' || 'culture' || 'entertainment')) {
+      news
       .create(singleNews)
         .then((data) => {
           res
@@ -68,7 +69,13 @@ exports.newsControllers = {
             .status(400)
             .send(err)
         })
-
+    } else {
+      res.status(400)
+         .send({
+           message: "invalid category"
+         })
+    }
+    
   }, 
   updateNews: (req, res) => {
     const newsId = req.params.id;
