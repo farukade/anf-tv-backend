@@ -52,7 +52,7 @@ exports.newsControllers = {
   },
   createNews: (req, res) => {
     const singleNews = req.body;
-    if (singleNews.category == ('politics' || 'sports' || 'technology' || 'business' || 'culture' || 'entertainment')) {
+    if (singleNews.category == 'politics' || 'sports' || 'technology' || 'business' || 'culture' || 'entertainment') {
       news
       .create(singleNews)
         .then((data) => {
