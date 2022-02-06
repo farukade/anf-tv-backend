@@ -52,7 +52,11 @@ exports.newsControllers = {
   },
   createNews: (req, res) => {
     const singleNews = req.body;
-    if (singleNews.category == 'politics' || 'sports' || 'technology' || 'business' || 'culture' || 'entertainment') {
+    let category = singleNews.category;
+    category = category.toLowerCase();
+    if (category === 'politics' || category === 'sports' || category === 'technology' || category === 'business' || category === 'culture' || category === 'entertainment') {
+    singleNews.category = singleNews.category.charAt(0).toUpperCase() + singleNews.category.slice(1);
+    console.log(singleNews.category);
       news
       .create(singleNews)
         .then((data) => {
