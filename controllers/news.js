@@ -155,7 +155,7 @@ exports.newsControllers = {
           // console.log(catArr);
           // res.send(catArr);
           
-          console.log(num -10);
+          // console.log(num -10);
           for (let i = num; i > (num - 10); i--) {
             if (catArr[i]) {
               let currentId = catArr[i].id;
@@ -164,7 +164,7 @@ exports.newsControllers = {
               };
             }
             }
-          console.log(newsArr.length);
+          // console.log(newsArr.length);
           res
             .status(200)
             .send(newsArr);
@@ -176,16 +176,14 @@ exports.newsControllers = {
             .send(err.message)
         })
   },
-  getOneNews: (req, res) => {
-    const newsId = req.params.id;
-
-    news
-      .findOne({
-        where: {
-          id: newsId
+  getOne: (req, res) => {
+    news.findOne({
+      where: {
+          id: req.params.id
         }
       })
         .then((data) => {
+          console.log('success');
           res
             .status(200)
             .send(data)

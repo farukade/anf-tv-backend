@@ -20,11 +20,11 @@ router.post('/create', newsController.newsControllers.createNews);
 router.get('/:categoryName/:id', newsController.newsControllers.getByCategory);
 
 //Get news all news (10 at a time); for error control
-// category name must be news in this case
+// categoryName must be news in this case
 router.get('/:categoryName', newsController.newsControllers.getByCategory);
 
 //Get one news
-router.get('/get-single-news/:id', newsController.newsControllers.getOneNews);
+router.post("/get/:id", newsController.newsControllers.getOne);
 
 
 //Get all news
