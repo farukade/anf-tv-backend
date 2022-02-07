@@ -17,7 +17,7 @@ router.use(function(req, res, next) {
 router.post('/create', newsController.newsControllers.createNews);
 
 //Get news by category (10 at a time);
-router.post('/:categoryName/:id', newsController.newsControllers.getByCategory);
+router.get('/:categoryName/:id', newsController.newsControllers.getByCategory);
 
 //Get news all news (10 at a time); for error control
 // categoryName must be news in this case
